@@ -3,69 +3,16 @@ import Icon from "@/components/ui/icon";
 
 const HERO_IMAGE = "https://cdn.poehali.dev/projects/4716061e-e8b0-4a87-8ccd-368b4e9b020a/files/12ec49fb-2bab-4ced-aecf-9a212932b157.jpg";
 
-const GAMES = [
-  {
-    id: 1,
-    title: "LVP: SHADOW REALM",
-    genre: "Экшн / Приключения",
-    status: "Доступна",
-    statusColor: "green",
-    description: "Тёмный мир, населённый тенями. Пройди через испытания и раскрой тайну исчезновения целого города.",
-    version: "v1.2.0",
-    size: "120 MB",
-    downloadUrl: "#",
-    tags: ["Экшн", "Платформер", "Тёмная тема"],
-  },
-  {
-    id: 2,
-    title: "LVP: NEON CHASE",
-    genre: "Гонки / Аркада",
-    status: "Доступна",
-    statusColor: "green",
-    description: "Неоновые улицы, бесконечная скорость. Обгони соперников в киберпанк-городе будущего.",
-    version: "v0.9.5",
-    size: "85 MB",
-    downloadUrl: "#",
-    tags: ["Гонки", "Аркада", "Киберпанк"],
-  },
-  {
-    id: 3,
-    title: "LVP: VOID ESCAPE",
-    genre: "Головоломка",
-    status: "Скоро",
-    statusColor: "cyan",
-    description: "Ты застрял в пустоте между измерениями. Найди выход, решая загадки пространства и времени.",
-    version: "В разработке",
-    size: "—",
-    downloadUrl: "#",
-    tags: ["Головоломка", "Sci-Fi", "Атмосфера"],
-  },
-];
+const GAMES: { id: number }[] = [];
 
 const ANNOUNCEMENTS = [
   {
     id: 1,
-    date: "28 февраля 2026",
-    title: "LVP: VOID ESCAPE — официальный анонс",
-    text: "Рад объявить о работе над новой игрой — VOID ESCAPE! Это головоломка в мире между измерениями. Релиз планируется летом 2026.",
-    tag: "Анонс",
+    date: "1 марта 2026",
+    title: "LVP: SURVIVAL — в разработке",
+    text: "Начата разработка новой игры — LVP: SURVIVAL! Подробности пока засекречены. Следите за обновлениями на этом сайте.",
+    tag: "В разработке",
     tagColor: "green",
-  },
-  {
-    id: 2,
-    date: "15 февраля 2026",
-    title: "NEON CHASE — обновление v0.9.5",
-    text: "Вышло крупное обновление: новые трассы, улучшенная физика машин, исправлены баги с коллизиями. Спасибо всем за отзывы!",
-    tag: "Обновление",
-    tagColor: "cyan",
-  },
-  {
-    id: 3,
-    date: "1 февраля 2026",
-    title: "SHADOW REALM — патч v1.2.0",
-    text: "Добавлен новый уровень — Руины Запада. Оптимизация производительности, новые враги и улучшенный саундтрек.",
-    tag: "Патч",
-    tagColor: "purple",
   },
 ];
 
@@ -233,7 +180,7 @@ export default function Index() {
               style={{ opacity: 0, animationDelay: "0.7s" }}
             >
               {[
-                { label: "Игры вышло", value: "2" },
+                { label: "Игры вышло", value: "0" },
                 { label: "В разработке", value: "1" },
                 { label: "Год старта", value: "2025" },
               ].map((s) => (
@@ -297,96 +244,26 @@ export default function Index() {
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {GAMES.map((game, i) => {
-              const neonColor =
-                game.statusColor === "green"
-                  ? "var(--neon-green)"
-                  : game.statusColor === "cyan"
-                  ? "var(--neon-cyan)"
-                  : "var(--neon-purple)";
-              return (
-                <div
-                  key={game.id}
-                  className="rounded-lg overflow-hidden"
-                  style={{
-                    background: "var(--dark-card)",
-                    border: "1px solid var(--dark-border)",
-                    opacity: visibleCards.includes(i) ? 1 : 0,
-                    transform: visibleCards.includes(i) ? "translateY(0)" : "translateY(30px)",
-                    transition: "opacity 0.4s ease, transform 0.4s ease, border-color 0.3s",
-                  }}
-                  onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLDivElement).style.borderColor = neonColor;
-                    (e.currentTarget as HTMLDivElement).style.boxShadow = `0 0 20px ${neonColor}22`;
-                  }}
-                  onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLDivElement).style.borderColor = "var(--dark-border)";
-                    (e.currentTarget as HTMLDivElement).style.boxShadow = "none";
-                  }}
-                >
-                  <div
-                    className="h-1.5"
-                    style={{ background: neonColor, boxShadow: `0 0 10px ${neonColor}` }}
-                  />
-                  <div className="p-5">
-                    <div className="flex items-start justify-between mb-3">
-                      <div>
-                        <span className="text-xs font-semibold" style={{ color: neonColor }}>
-                          ● {game.status}
-                        </span>
-                        <p className="text-xs mt-0.5" style={{ color: "#555" }}>
-                          {game.genre}
-                        </p>
-                      </div>
-                      <span className="text-xs font-mono" style={{ color: "#444" }}>
-                        {game.version}
-                      </span>
-                    </div>
-
-                    <h3 className="font-display text-xl mb-3 leading-tight" style={{ color: "#e0e0e0" }}>
-                      {game.title}
-                    </h3>
-
-                    <p className="text-sm leading-relaxed mb-4" style={{ color: "#777" }}>
-                      {game.description}
-                    </p>
-
-                    <div className="flex flex-wrap gap-1.5 mb-5">
-                      {game.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="text-xs px-2 py-0.5 rounded"
-                          style={{ background: "rgba(255,255,255,0.04)", color: "#666", border: "1px solid #1e1e2e" }}
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-
-                    {game.status === "Доступна" ? (
-                      <button
-                        className="neon-glow-btn w-full font-bold text-xs tracking-widest uppercase py-3 rounded flex items-center justify-center gap-2"
-                      >
-                        <Icon name="Download" size={14} />
-                        Скачать · {game.size}
-                      </button>
-                    ) : (
-                      <div
-                        className="w-full text-center font-bold text-xs tracking-widest uppercase py-3 rounded"
-                        style={{
-                          background: "rgba(0,255,255,0.06)",
-                          border: "1px solid var(--neon-cyan)",
-                          color: "var(--neon-cyan)",
-                        }}
-                      >
-                        Скоро
-                      </div>
-                    )}
-                  </div>
-                </div>
-              );
-            })}
+          <div className="flex flex-col items-center justify-center py-20 text-center">
+            <div
+              className="w-20 h-20 rounded-full flex items-center justify-center mb-6 animate-pulse-neon"
+              style={{ border: "2px solid var(--neon-green)", boxShadow: "0 0 30px rgba(0,255,136,0.2)" }}
+            >
+              <Icon name="Wrench" size={32} style={{ color: "var(--neon-green)" }} />
+            </div>
+            <h3 className="font-display text-4xl mb-3" style={{ color: "#e0e0e0" }}>
+              ВСЕ ИГРЫ ПОКА-ЧТО В РАЗРАБОТКЕ
+            </h3>
+            <p className="text-sm max-w-sm" style={{ color: "#555" }}>
+              Скоро здесь появятся игры. Следи за анонсами — я сообщу о выходе первой игры!
+            </p>
+            <button
+              onClick={() => scrollTo("Анонсы")}
+              className="neon-glow-btn-outline font-bold text-xs tracking-widest uppercase px-6 py-2.5 rounded mt-8 flex items-center gap-2"
+            >
+              <Icon name="Megaphone" size={14} />
+              Смотреть анонсы
+            </button>
           </div>
         </main>
       )}
