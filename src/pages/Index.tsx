@@ -25,7 +25,8 @@ export default function Index() {
 
   useEffect(() => {
     setVisibleCards([]);
-    const timers = GAMES.map((_, i) =>
+    const count = activeSection === "Анонсы" ? ANNOUNCEMENTS.length : GAMES.length;
+    const timers = Array.from({ length: count }, (_, i) =>
       setTimeout(() => setVisibleCards((prev) => [...prev, i]), 200 + i * 150)
     );
     return () => timers.forEach(clearTimeout);
