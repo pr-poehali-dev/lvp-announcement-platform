@@ -22,6 +22,14 @@ const ANNOUNCEMENTS = [
     tag: "Анонс",
     tagColor: "blue",
   },
+  {
+    id: 3,
+    date: "3 марта 2026",
+    title: "LVP: DRIVING CAR — анонсировано",
+    text: "Команда LVP анонсирует LVP: DRIVING CAR! Подробности скоро. Следите за обновлениями.",
+    tag: "Анонс",
+    tagColor: "blue",
+  },
 ];
 
 const NAV_ITEMS = ["Главная", "Игры", "Анонсы"];
