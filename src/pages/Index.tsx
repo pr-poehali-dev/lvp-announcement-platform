@@ -15,14 +15,6 @@ const ANNOUNCEMENTS = [
     tagColor: "green",
   },
   {
-    id: 2,
-    date: "3 марта 2026",
-    title: "LVP: DRIVING — анонсировано",
-    text: "Представляем LVP: DRIVING — новый проект от команды LVP! Подробности скоро. Следите за обновлениями.",
-    tag: "Анонс",
-    tagColor: "blue",
-  },
-  {
     id: 3,
     date: "3 марта 2026",
     title: "LVP: DRIVING CAR — анонсировано",
